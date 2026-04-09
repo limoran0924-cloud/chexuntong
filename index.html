@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>车讯通 - 汽车行业资讯</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 头部导航 -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo" onclick="app.goHome()">
+                    <i class="fas fa-car"></i>
+                    <span>车讯通</span>
+                </div>
+                <nav class="nav">
+                    <button class="nav-btn active" data-tab="home" onclick="app.switchTab('home')">
+                        <i class="fas fa-home"></i> 首页
+                    </button>
+                    <button class="nav-btn" data-tab="favorites" onclick="app.switchTab('favorites')">
+                        <i class="fas fa-star"></i> 收藏
+                    </button>
+                    <button class="nav-btn" data-tab="brands" onclick="app.switchTab('brands')">
+                        <i class="fas fa-tags"></i> 品牌
+                    </button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- 搜索栏 -->
+        <div class="search-bar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="搜索车型、品牌、关键词..." onkeyup="app.handleSearch(event)">
+            </div>
+        </div>
+
+        <!-- 筛选栏 -->
+        <div class="filter-bar">
+            <div class="filter-group">
+                <select id="brandFilter" onchange="app.filterByBrand(this.value)">
+                    <option value="">全部品牌</option>
+                </select>
+                <select id="categoryFilter" onchange="app.filterByCategory(this.value)">
+                    <option value="">全部类型</option>
+                    <option value="新车">新车上市</option>
+                    <option value="评测">专业评测</option>
+                    <option value="行业">行业资讯</option>
+                    <option value="技术">技术解析</option>
+                    <option value="价格">价格动态</option>
+                </select>
+                <select id="timeFilter" onchange="app.filterByTime(this.value)">
+                    <option value="">全部时间</option>
+                    <option value="today">今天</option>
+                    <option value="week">本周</option>
+                    <option value="month">本月</option>
+                </select>
+            </div>
+            <div class="update-info">
+                <i class="fas fa-sync-alt"></i>
+                <span id="lastUpdate">--</span>
+            </div>
+        </div>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 资讯列表页 -->
+            <div id="homeView" class="view active">
+                <div class="news-grid" id="newsList">
+                    <!-- 动态生成 -->
+                </div>
+                <div class="loading" id="loading" style="display: none;">
+                    <i class="fas fa-spinner fa-spin"></i> 加载中...
+                </div>
+                <div class="load-more" id="loadMore" onclick="app.loadMore()">
+                    加载更多
+                </div>
+            </div>
+
+            <!-- 收藏页 -->
+            <div id="favoritesView" class="view">
+                <h2 class="page-title">
+                    <i class="fas fa-star"></i> 我的收藏
+                </h2>
+                <div class="news-grid" id="favoritesList">
+                    <!-- 动态生成 -->
+                </div>
+                <div class="empty-state" id="emptyFavorites" style="display: none;">
+                    <i class="fas fa-star"></i>
+                    <p>暂无收藏内容</p>
+                    <button onclick="app.switchTab('home')">去浏览</button>
+                </div>
+            </div>
+
+            <!-- 品牌页 -->
+            <div id="brandsView" class="view">
+                <h2 class="page-title">
+                    <i class="fas fa-tags"></i> 品牌专区
+                </h2>
+                <div class="brands-grid" id="brandsList">
+                    <!-- 动态生成 -->
+                </div>
+            </div>
+
+            <!-- 详情页 -->
+            <div id="detailView" class="view">
+                <button class="back-btn" onclick="app.goBack()">
+                    <i class="fas fa-arrow-left"></i> 返回
+                </button>
+                <article class="detail-article" id="detailContent">
+                    <!-- 动态生成 -->
+                </article>
+            </div>
+        </main>
+
+        <!-- 底部信息 -->
+        <footer class="footer">
+            <p>数据来源：汽车之家、懂车帝、易车、36氪等 | 每周自动更新</p>
+            <p class="update-time">下次更新：<span id="nextUpdate">--</span></p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
