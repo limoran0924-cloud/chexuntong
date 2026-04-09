@@ -69,8 +69,29 @@ const app = {
         localStorage.setItem('darkMode', this.data.darkMode);
     },
 
-    // 加载数据（含真实链接和更多车型）
-    loadData() {
+    // 加载数据
+    async loadData() {
+        try {
+            // 尝试加载外部数据文件
+            const response = await fetch('data.json');
+            if (response.ok) {
+                const data = await response.json();
+                this.data.news = data.news || [];
+                console.log('✅ 已加载外部数据:', data.lastUpdate);
+            } else {
+                throw new Error('无法加载数据文件');
+            }
+        } catch (error) {
+            console.log('⚠️ 使用内置数据:', error.message);
+            this.loadBuiltinData();
+        }
+        
+        this.renderNews();
+        this.updateStats();
+    },
+
+    // 内置数据（备用）
+    loadBuiltinData() {
         const newsData = [
             // 宝马系列
             { id: '1', title: '宝马新世代iX3更多细节曝光，续航突破900公里', brand: '宝马', category: '新车', source: '汽车之家', sourceUrl: 'https://www.autohome.com.cn/news/202404/1299999.html', date: this.getRecentDate(0), summary: '近日，宝马官方发布了新世代iX3的更多细节信息，新车将搭载108kWh电池组，CLTC续航达到900公里。800V高压架构支持10分钟快充400公里。', content: this.generateDetailContent('宝马', '新世代iX3', '新车', 'https://www.autohome.com.cn/news/202404/1299999.html'), views: 52340 },
