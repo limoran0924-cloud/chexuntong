@@ -1141,6 +1141,58 @@ const DATA_SOURCE = {
             date: '2026-04-15',
             source: '知乎',
             url: 'https://zhuanlan.zhihu.com/p/2019938816857776812'
+        },
+        
+        // ========== 新增：汽车分类 ==========
+        {
+            id: 109,
+            category: 'car',
+            categoryName: '汽车',
+            title: '2026年中国汽车产销突破3000万辆，连续18年全球第一',
+            summary: '中汽协数据显示，2026年中国汽车产销双双突破3000万辆大关，同比增长8.5%，连续18年蝉联全球汽车产销第一大国。新能源汽车占比超过40%。',
+            date: '2026-04-18',
+            source: '中汽协',
+            url: 'https://www.caam.org.cn/news'
+        },
+        {
+            id: 110,
+            category: 'car',
+            categoryName: '汽车',
+            title: '传统车企加速转型，燃油车市场份额跌破50%',
+            summary: '2026年一季度数据显示，燃油车市场份额首次跌破50%，新能源车及混动车型成为市场主流。大众、丰田、通用等传统巨头加速电动化布局。',
+            date: '2026-04-16',
+            source: '乘联会',
+            url: 'https://www.cpcaauto.com/newslist'
+        },
+        {
+            id: 111,
+            category: 'car',
+            categoryName: '汽车',
+            title: '汽车智能化水平大幅提升，L2级辅助驾驶渗透率达65%',
+            summary: '2026年新车L2级辅助驾驶配置率已达65%，较2025年提升15个百分点。智能驾驶从高端车型向10-20万元主流市场快速普及。',
+            date: '2026-04-14',
+            source: '汽车之家研究院',
+            url: 'https://www.autohome.com.cn/news'
+        },
+        {
+            id: 112,
+            category: 'car',
+            categoryName: '汽车',
+            title: '二手车交易量创新高，2026年预计突破2200万辆',
+            summary: '中国汽车流通协会预测，2026年二手车交易量将突破2200万辆，同比增长12%。二手车市场规范化程度持续提升，线上交易占比超过30%。',
+            date: '2026-04-12',
+            source: '中国汽车流通协会',
+            url: 'http://www.cada.cn/news'
+        },
+        {
+            id: 113,
+            category: 'car',
+            categoryName: '汽车',
+            title: '汽车出口量跃居全球第一，中国品牌海外影响力提升',
+            summary: '2026年一季度中国汽车出口量达280万辆，超越日本和德国，成为全球最大汽车出口国。比亚迪、奇瑞、上汽等品牌在海外市场表现亮眼。',
+            date: '2026-04-10',
+            source: '海关总署',
+            url: 'http://www.customs.gov.cn'
         }
     ]
 };

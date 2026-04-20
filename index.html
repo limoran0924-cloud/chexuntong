@@ -331,8 +331,30 @@
             <button class="btn btn-secondary" onclick="viewHistory()">📚 历史记录</button>
         </div>
         
+        <!-- 搜索框 -->
+        <div class="search-box" style="margin: 20px 0; text-align: center;">
+            <input type="text" id="searchInput" placeholder="🔍 搜索资讯标题、内容、来源..." 
+                   style="width: 60%; max-width: 500px; padding: 12px 20px; border: 2px solid rgba(255,255,255,0.3); 
+                          border-radius: 25px; font-size: 16px; background: rgba(255,255,255,0.9); 
+                          outline: none; transition: all 0.3s;"
+                   onkeyup="handleSearch(event)">
+            <button onclick="performSearch()" 
+                    style="margin-left: 10px; padding: 12px 25px; border: none; border-radius: 25px; 
+                           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; 
+                           font-size: 16px; cursor: pointer; transition: all 0.3s;">
+                搜索
+            </button>
+            <button onclick="clearSearch()" 
+                    style="margin-left: 10px; padding: 12px 20px; border: none; border-radius: 25px; 
+                           background: rgba(255,255,255,0.3); color: white; font-size: 16px; 
+                           cursor: pointer; transition: all 0.3s;">
+                清空
+            </button>
+        </div>
+        
         <div class="tabs">
             <div class="tab active" onclick="filterCategory('all')">全部</div>
+            <div class="tab" onclick="filterCategory('car')">🚗 汽车</div>
             <div class="tab" onclick="filterCategory('industry')">🏛️ 行业动态</div>
             <div class="tab" onclick="filterCategory('newcar')">🚘 新车发布</div>
             <div class="tab" onclick="filterCategory('company')">🏢 企业新闻</div>
@@ -481,6 +503,54 @@
         
         function viewHistory() {
             alert('历史记录功能开发中...\n（此功能需要接入后端API）');
+        }
+        
+        // ========== 搜索功能 ==========
+        function handleSearch(event) {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        }
+        
+        function performSearch() {
+            const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
+            if (!keyword) {
+                renderNews(currentData);
+                return;
+            }
+            
+            const filtered = currentData.filter(item => {
+                return item.title.toLowerCase().includes(keyword) ||
+                       item.summary.toLowerCase().includes(keyword) ||
+                       item.source.toLowerCase().includes(keyword) ||
+                       item.categoryName.toLowerCase().includes(keyword);
+            });
+            
+            renderNews(filtered);
+            
+            // 显示搜索结果提示
+            const contentArea = document.getElementById('contentArea');
+            const resultTip = document.createElement('div');
+            resultTip.id = 'search-result-tip';
+            resultTip.innerHTML = `
+                <div style="background: rgba(102, 126, 234, 0.1); border-left: 4px solid #667eea; 
+                            padding: 15px 20px; margin-bottom: 20px; border-radius: 8px;">
+                    <strong>🔍 搜索结果：</strong>找到 ${filtered.length} 条包含 "${keyword}" 的资讯
+                    <button onclick="clearSearch()" style="margin-left: 15px; padding: 5px 15px; 
+                            border: none; border-radius: 15px; background: #667eea; color: white; 
+                            cursor: pointer; font-size: 14px;">清空搜索</button>
+                </div>
+            `;
+            contentArea.insertBefore(resultTip, contentArea.firstChild);
+        }
+        
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            renderNews(currentData);
+            currentFilter = 'all';
+            // 重置tab样式
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab')[0].classList.add('active');
         }
         
         // 页面加载时初始化
