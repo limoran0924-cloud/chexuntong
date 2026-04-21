@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>车讯通 - 汽车行业周报</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
@@ -18,10 +14,7 @@
             padding: 20px;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1200px; margin: 0 auto; }
         
         header {
             text-align: center;
@@ -36,10 +29,7 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
         
-        header p {
-            font-size: 18px;
-            opacity: 0.9;
-        }
+        header p { font-size: 18px; opacity: 0.9; }
         
         .update-time {
             background: rgba(255,255,255,0.2);
@@ -89,22 +79,30 @@
             transform: translateY(-2px);
         }
         
+        .section-title {
+            color: white;
+            text-align: center;
+            font-size: 18px;
+            margin: 20px 0 10px;
+            opacity: 0.9;
+        }
+        
         .tabs {
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
         }
         
         .tab {
-            padding: 10px 25px;
+            padding: 10px 20px;
             background: rgba(255,255,255,0.2);
             color: white;
             border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s;
-            font-size: 14px;
+            font-size: 13px;
         }
         
         .tab:hover, .tab.active {
@@ -147,6 +145,12 @@
         .news-card.company::before { background: #f39c12; }
         .news-card.tech::before { background: #9b59b6; }
         .news-card.market::before { background: #1abc9c; }
+        .news-card.marketing::before { background: #e74c3c; }
+        .news-card.influencer::before { background: #9b59b6; }
+        .news-card.media::before { background: #f39c12; }
+        .news-card.social::before { background: #1abc9c; }
+        .news-card.competitor::before { background: #3498db; }
+        .news-card.calendar::before { background: #e74c3c; }
         
         .card-header {
             display: flex;
@@ -167,6 +171,12 @@
         .category-tag.company { background: #fef5e7; color: #f39c12; }
         .category-tag.tech { background: #f5eef8; color: #9b59b6; }
         .category-tag.market { background: #e8f8f5; color: #1abc9c; }
+        .category-tag.marketing { background: #fdedec; color: #e74c3c; }
+        .category-tag.influencer { background: #f5eef8; color: #9b59b6; }
+        .category-tag.media { background: #fef5e7; color: #f39c12; }
+        .category-tag.social { background: #e8f8f5; color: #1abc9c; }
+        .category-tag.competitor { background: #ebf5fb; color: #3498db; }
+        .category-tag.calendar { background: #fdedec; color: #e74c3c; }
         
         .date {
             font-size: 12px;
@@ -209,9 +219,7 @@
             gap: 5px;
         }
         
-        .read-more:hover {
-            color: #764ba2;
-        }
+        .read-more:hover { color: #764ba2; }
         
         .loading {
             text-align: center;
@@ -229,24 +237,12 @@
             margin: 0 auto 20px;
         }
         
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
         
         .empty-state {
             text-align: center;
             padding: 80px 20px;
             color: white;
-        }
-        
-        .empty-state h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-        
-        .empty-state p {
-            opacity: 0.8;
-            margin-bottom: 30px;
         }
         
         footer {
@@ -280,44 +276,29 @@
         }
         
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 32px;
-            }
-            
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .actions {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 200px;
-            }
+            header h1 { font-size: 32px; }
+            .content-grid { grid-template-columns: 1fr; }
+            .actions { flex-direction: column; align-items: center; }
+            .btn { width: 200px; }
         }
     </style>
-    <!-- PDF生成库 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.5.31/dist/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>🚗 车讯通</h1>
-            <p>汽车行业一周资讯精选</p>
+            <p>汽车行业资讯 + 媒介策略资源库</p>
             <div class="update-time">📅 数据更新于：<span id="updateTime">加载中...</span></div>
         </header>
         
         <div class="stats">
             <div class="stat-item">
                 <div class="stat-number" id="totalNews">0</div>
-                <div class="stat-label">本周资讯</div>
+                <div class="stat-label">汽车资讯</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number" id="categoryCount">5</div>
-                <div class="stat-label">覆盖领域</div>
+                <div class="stat-number">5+6</div>
+                <div class="stat-label">资讯+媒介模块</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number" id="sourceCount">0</div>
@@ -331,35 +312,26 @@
             <button class="btn btn-secondary" onclick="viewHistory()">📚 历史记录</button>
         </div>
         
-        <!-- 搜索框 -->
-        <div class="search-box" style="margin: 20px 0; text-align: center;">
-            <input type="text" id="searchInput" placeholder="🔍 搜索资讯标题、内容、来源..." 
-                   style="width: 60%; max-width: 500px; padding: 12px 20px; border: 2px solid rgba(255,255,255,0.3); 
-                          border-radius: 25px; font-size: 16px; background: rgba(255,255,255,0.9); 
-                          outline: none; transition: all 0.3s;"
-                   onkeyup="handleSearch(event)">
-            <button onclick="performSearch()" 
-                    style="margin-left: 10px; padding: 12px 25px; border: none; border-radius: 25px; 
-                           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; 
-                           font-size: 16px; cursor: pointer; transition: all 0.3s;">
-                搜索
-            </button>
-            <button onclick="clearSearch()" 
-                    style="margin-left: 10px; padding: 12px 20px; border: none; border-radius: 25px; 
-                           background: rgba(255,255,255,0.3); color: white; font-size: 16px; 
-                           cursor: pointer; transition: all 0.3s;">
-                清空
-            </button>
-        </div>
-        
+        <!-- 原有资讯分类 -->
+        <div class="section-title">📰 汽车资讯</div>
         <div class="tabs">
             <div class="tab active" onclick="filterCategory('all')">全部</div>
-            <div class="tab" onclick="filterCategory('car')">🚗 汽车</div>
             <div class="tab" onclick="filterCategory('industry')">🏛️ 行业动态</div>
             <div class="tab" onclick="filterCategory('newcar')">🚘 新车发布</div>
             <div class="tab" onclick="filterCategory('company')">🏢 企业新闻</div>
             <div class="tab" onclick="filterCategory('tech')">🔬 技术趋势</div>
             <div class="tab" onclick="filterCategory('market')">📊 市场热点</div>
+        </div>
+        
+        <!-- 新增媒介策略模块 -->
+        <div class="section-title">🎯 媒介策略资源</div>
+        <div class="tabs">
+            <div class="tab" onclick="filterCategory('marketing')">📊 营销案例</div>
+            <div class="tab" onclick="filterCategory('influencer')">🎤 KOL资源</div>
+            <div class="tab" onclick="filterCategory('media')">📺 投放数据</div>
+            <div class="tab" onclick="filterCategory('social')">📱 社媒声量</div>
+            <div class="tab" onclick="filterCategory('competitor')">⚔️ 竞品分析</div>
+            <div class="tab" onclick="filterCategory('calendar')">📅 营销日历</div>
         </div>
         
         <div id="contentArea">
@@ -377,50 +349,27 @@
     
     <script src="data.js"></script>
     <script>
-        // 使用真实数据源
-
-        
         let currentData = [];
         let currentFilter = 'all';
         
         function init() {
-            updateTime();
+            document.getElementById('updateTime').textContent = DATA_SOURCE.lastUpdate;
             loadData();
         }
         
-        function updateTime() {
-            const now = new Date();
-            const timeStr = now.toLocaleString('zh-CN', {
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit',
-                hour: '2-digit',
-                minute: '2-digit'
-            });
-            document.getElementById('updateTime').textContent = timeStr;
-        }
-        
         function loadData() {
-            // 使用真实数据源
             setTimeout(() => {
                 currentData = DATA_SOURCE.news;
                 renderNews(currentData);
                 updateStats();
-                document.getElementById('updateTime').textContent = DATA_SOURCE.lastUpdate + ' 09:00';
-            }, 800);
+            }, 500);
         }
         
         function renderNews(data) {
             const contentArea = document.getElementById('contentArea');
             
             if (data.length === 0) {
-                contentArea.innerHTML = `
-                    <div class="empty-state">
-                        <h3>暂无数据</h3>
-                        <p>本周该类别的资讯正在收集中，请稍后再试</p>
-                        <button class="btn btn-primary" onclick="refreshData()">刷新数据</button>
-                    </div>
-                `;
+                contentArea.innerHTML = '<div class="empty-state"><h3>暂无数据</h3></div>';
                 return;
             }
             
@@ -436,15 +385,177 @@
                             <p class="news-summary">${item.summary}</p>
                             <div class="news-footer">
                                 <span class="source">来源：${item.source}</span>
-                                <a href="${item.url}" target="_blank" class="read-more">
-                                    查看原文 →
-                                </a>
+                                <a href="${item.url}" target="_blank" class="read-more">查看原文 →</a>
                             </div>
                         </div>
                     `).join('')}
                 </div>
             `;
+            contentArea.innerHTML = html;
+        }
+        
+        function renderMarketing() {
+            const contentArea = document.getElementById('contentArea');
+            const cases = DATA_SOURCE.marketing ? DATA_SOURCE.marketing.cases : [];
             
+            const html = `
+                <div class="content-grid">
+                    ${cases.map(item => `
+                        <div class="news-card marketing">
+                            <div class="card-header">
+                                <span class="category-tag marketing">${item.type}</span>
+                                <span class="date">${item.period}</span>
+                            </div>
+                            <h3 class="news-title">${item.brand} - ${item.campaign}</h3>
+                            <p class="news-summary">${item.summary}</p>
+                            <div class="news-footer">
+                                <span class="source">效果：${item.effect}</span>
+                                <a href="${item.url}" target="_blank" class="read-more">查看详情 →</a>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            contentArea.innerHTML = html;
+        }
+        
+        function renderInfluencer() {
+            const contentArea = document.getElementById('contentArea');
+            const list = DATA_SOURCE.influencer ? DATA_SOURCE.influencer.list : [];
+            
+            const html = `
+                <div class="content-grid">
+                    ${list.map(item => `
+                        <div class="news-card influencer">
+                            <div class="card-header">
+                                <span class="category-tag influencer">${item.tier === 'top' ? '头部达人' : '腰部达人'}</span>
+                                <span class="date">${item.followers}</span>
+                            </div>
+                            <h3 class="news-title">${item.name}</h3>
+                            <p class="news-summary">
+                                <strong>平台：</strong>${item.platform}<br>
+                                <strong>擅长：</strong>${item.specialty}<br>
+                                <strong>合作：</strong>${item.brands.join('、')}
+                            </p>
+                            <div class="news-footer">
+                                <span class="source">报价：${item.avgPrice}</span>
+                                <a href="${item.url}" target="_blank" class="read-more">查看主页 →</a>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            contentArea.innerHTML = html;
+        }
+        
+        function renderMedia() {
+            const contentArea = document.getElementById('contentArea');
+            const platforms = DATA_SOURCE.media ? DATA_SOURCE.media.platforms : [];
+            
+            const html = `
+                <div class="content-grid">
+                    ${platforms.map(item => `
+                        <div class="news-card media">
+                            <div class="card-header">
+                                <span class="category-tag media">${item.type}</span>
+                                <span class="date">${item.name}</span>
+                            </div>
+                            <h3 class="news-title">${item.name}</h3>
+                            <p class="news-summary">
+                                <strong>月均投放：</strong>${item.avgSpend}<br>
+                                <strong>优势：</strong>${item.advantage}<br>
+                                <strong>趋势：</strong>${item.trend}
+                            </p>
+                            <div class="news-footer">
+                                <span class="source">品牌数：${item.autoBrands}</span>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            contentArea.innerHTML = html;
+        }
+        
+        function renderSocial() {
+            const contentArea = document.getElementById('contentArea');
+            const ranking = DATA_SOURCE.social ? DATA_SOURCE.social.brandRanking : [];
+            
+            const html = `
+                <div class="content-grid">
+                    ${ranking.map((item, index) => `
+                        <div class="news-card social">
+                            <div class="card-header">
+                                <span class="category-tag social">TOP ${index + 1}</span>
+                                <span class="date">${item.growth}</span>
+                            </div>
+                            <h3 class="news-title">${item.brand}</h3>
+                            <p class="news-summary">
+                                <strong>声量指数：</strong>${item.mentionIndex}<br>
+                                <strong>热点话题：</strong>${item.hotTopics.join('、')}
+                            </p>
+                            <div class="news-footer">
+                                <span class="source">社媒声量监测</span>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            contentArea.innerHTML = html;
+        }
+        
+        function renderCompetitor() {
+            const contentArea = document.getElementById('contentArea');
+            const list = DATA_SOURCE.competitor ? DATA_SOURCE.competitor.comparison : [];
+            
+            const html = `
+                <div class="content-grid">
+                    ${list.map(item => `
+                        <div class="news-card competitor">
+                            <div class="card-header">
+                                <span class="category-tag competitor">竞品</span>
+                                <span class="date">${item.budgetLevel}</span>
+                            </div>
+                            <h3 class="news-title">${item.brand}</h3>
+                            <p class="news-summary">
+                                <strong>定位：</strong>${item.positioning}<br>
+                                <strong>核心信息：</strong>${item.keyMessage}<br>
+                                <strong>差异化：</strong>${item.differentiation}
+                            </p>
+                            <div class="news-footer">
+                                <span class="source">${item.mainPlatforms.join('、')}</span>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            contentArea.innerHTML = html;
+        }
+        
+        function renderCalendar() {
+            const contentArea = document.getElementById('contentArea');
+            const shows = DATA_SOURCE.calendar ? DATA_SOURCE.calendar.autoShows : [];
+            
+            const html = `
+                <div class="content-grid">
+                    ${shows.map(item => `
+                        <div class="news-card calendar">
+                            <div class="card-header">
+                                <span class="category-tag calendar">A级车展</span>
+                                <span class="date">${item.date}</span>
+                            </div>
+                            <h3 class="news-title">${item.name}</h3>
+                            <p class="news-summary">
+                                <strong>地点：</strong>${item.venue}<br>
+                                <strong>亮点：</strong>${item.highlights.join('、')}
+                            </p>
+                            <div class="news-footer">
+                                <span class="source">营销节点日历</span>
+                                <a href="${item.url}" target="_blank" class="read-more">官网 →</a>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
             contentArea.innerHTML = html;
         }
         
@@ -457,103 +568,48 @@
         function filterCategory(category) {
             currentFilter = category;
             
-            // 更新tab样式
             document.querySelectorAll('.tab').forEach(tab => {
                 tab.classList.remove('active');
             });
             event.target.classList.add('active');
             
-            // 筛选数据
             if (category === 'all') {
                 renderNews(currentData);
-            } else {
+            } else if (['industry', 'newcar', 'company', 'tech', 'market'].includes(category)) {
                 const filtered = currentData.filter(item => item.category === category);
                 renderNews(filtered);
+            } else if (category === 'marketing') {
+                renderMarketing();
+            } else if (category === 'influencer') {
+                renderInfluencer();
+            } else if (category === 'media') {
+                renderMedia();
+            } else if (category === 'social') {
+                renderSocial();
+            } else if (category === 'competitor') {
+                renderCompetitor();
+            } else if (category === 'calendar') {
+                renderCalendar();
             }
         }
         
         function refreshData() {
-            const contentArea = document.getElementById('contentArea');
-            contentArea.innerHTML = `
-                <div class="loading">
-                    <div class="loading-spinner"></div>
-                    <p>正在刷新数据...</p>
-                </div>
+            document.getElementById('contentArea').innerHTML = `
+                <div class="loading"><div class="loading-spinner"></div><p>正在刷新数据...</p></div>
             `;
-            
-            // 模拟刷新
             setTimeout(() => {
-                updateTime();
                 loadData();
-            }, 2000);
+            }, 1000);
         }
         
         function generateReport() {
-            // 确保显示全部资讯
-            if (currentFilter !== 'all') {
-                currentFilter = 'all';
-                renderNews(DATA_SOURCE.news);
-                // 更新tab样式
-                document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-                document.querySelectorAll('.tab')[0].classList.add('active');
-            }
-            
-            alert('请按 Ctrl+P (Windows) 或 Cmd+P (Mac) 打印为PDF\n\n提示：选择「目标打印机」→「另存为PDF」');
+            alert('生成周报功能开发中...\n将导出PDF格式报告');
         }
         
         function viewHistory() {
-            alert('历史记录功能开发中...\n（此功能需要接入后端API）');
+            alert('历史记录功能开发中...');
         }
         
-        // ========== 搜索功能 ==========
-        function handleSearch(event) {
-            if (event.key === 'Enter') {
-                performSearch();
-            }
-        }
-        
-        function performSearch() {
-            const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
-            if (!keyword) {
-                renderNews(currentData);
-                return;
-            }
-            
-            const filtered = currentData.filter(item => {
-                return item.title.toLowerCase().includes(keyword) ||
-                       item.summary.toLowerCase().includes(keyword) ||
-                       item.source.toLowerCase().includes(keyword) ||
-                       item.categoryName.toLowerCase().includes(keyword);
-            });
-            
-            renderNews(filtered);
-            
-            // 显示搜索结果提示
-            const contentArea = document.getElementById('contentArea');
-            const resultTip = document.createElement('div');
-            resultTip.id = 'search-result-tip';
-            resultTip.innerHTML = `
-                <div style="background: rgba(102, 126, 234, 0.1); border-left: 4px solid #667eea; 
-                            padding: 15px 20px; margin-bottom: 20px; border-radius: 8px;">
-                    <strong>🔍 搜索结果：</strong>找到 ${filtered.length} 条包含 "${keyword}" 的资讯
-                    <button onclick="clearSearch()" style="margin-left: 15px; padding: 5px 15px; 
-                            border: none; border-radius: 15px; background: #667eea; color: white; 
-                            cursor: pointer; font-size: 14px;">清空搜索</button>
-                </div>
-            `;
-            contentArea.insertBefore(resultTip, contentArea.firstChild);
-        }
-        
-        function clearSearch() {
-            document.getElementById('searchInput').value = '';
-            renderNews(currentData);
-            currentFilter = 'all';
-            // 重置tab样式
-            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.tab')[0].classList.add('active');
-        }
-        
-        // 页面加载时初始化
         window.onload = init;
     </script>
 </body>

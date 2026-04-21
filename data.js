@@ -1,7 +1,28 @@
-// 车讯通 - 真实数据源配置
+// =====================================================
+// 车讯通 v2.0 - 汽车行业资讯+媒介策略资源库
+// 更新日期: 2026-04-21
+// =====================================================
+//
+// 📊 六大核心模块:
+// 1. news          - 汽车资讯 (行业动态/新车/企业/技术/市场)
+// 2. marketing     - 营销案例库 (Campaign案例/策略拆解)
+// 3. influencer    - KOL/KOC资源 (达人清单/报价/平台)
+// 4. media         - 媒体投放数据 (平台分析/预算/趋势)
+// 5. social        - 社媒声量监测 (品牌排名/热点追踪)
+// 6. competitor    - 竞品媒介分析 (竞品策略/差异化)
+// 7. calendar      - 营销节点日历 (车展/发布会/营销节点)
+//
+// 使用示例:
+// DATA_SOURCE.marketing.cases    - 获取营销案例
+// DATA_SOURCE.influencer.list    - 获取KOL资源
+// DATA_SOURCE.social.brandRanking - 获取品牌声量排名
+// =====================================================
+
 const DATA_SOURCE = {
     // 当前使用真实搜索数据（2026年4月）
-    lastUpdate: '2026-04-20',
+    lastUpdate: '2026-04-21',
+    version: '2.0',
+    description: '汽车行业资讯+媒介策略资源库',
     
     // 真实汽车资讯数据 - 覆盖全行业（50+条）
     news: [
@@ -1194,6 +1215,358 @@ const DATA_SOURCE = {
             source: '海关总署',
             url: 'http://www.customs.gov.cn'
         }
+    ]
+};
+
+// ========== 媒介策略资源模块（2026年4月新增）==========
+
+// 1. 汽车营销案例库
+DATA_SOURCE.marketing = {
+    categoryName: '营销案例',
+    lastUpdate: '2026-04-21',
+    cases: [
+        {
+            id: 1,
+            brand: '小米汽车',
+            campaign: 'YU7新车上市整合营销',
+            type: '新车上市',
+            period: '2026年4月',
+            summary: '小米YU7作为第二款量产车型，采用"预约热度+社交媒体裂变+线下体验店联动"策略，通过雷军个人IP持续造势，全网预约量破百万',
+            keyPoints: ['雷军个人IP深度绑定', '社交媒体病毒式传播', '线下门店沉浸式体验'],
+            platforms: ['微博', '抖音', '小红书', 'B站'],
+            effect: '全网预约量破百万，成为2026年最受期待新能源SUV',
+            source: '汽车之家',
+            url: 'https://chejiahao.autohome.com.cn/info/24895035'
+        },
+        {
+            id: 2,
+            brand: '鸿蒙智行',
+            campaign: '「五界十车」年度Campaign',
+            type: '品牌传播',
+            period: '2025-2026年',
+            summary: '华为赋能下的问界、智界、享界、尊界、尚界五大品牌整合营销，通过余承东个人IP和"遥遥领先"话术建立品牌认知',
+            keyPoints: ['余承东个人IP', '技术标签化传播', '五界差异化定位'],
+            platforms: ['微博', '抖音', '视频号', '线下发布会'],
+            effect: '2025年累计交付58.9万辆，2026年冲击130-220万辆目标',
+            source: '爱范儿',
+            url: 'https://www.ifanr.com/1652823'
+        },
+        {
+            id: 3,
+            brand: '蔚来',
+            campaign: '换电3分钟传播战役',
+            type: '产品优势传播',
+            period: '2026年4月',
+            summary: '针对比亚迪闪充技术挑战，蔚来强化换电3分钟满血的核心优势，通过数据对比和用户体验视频建立差异化认知',
+            keyPoints: ['换电vs充电对比', '用户体验证言', '9纵11横16大城市群传播'],
+            platforms: ['抖音', '微博', '小红书', 'NIO App'],
+            effect: '换电认知度提升，已建成全球最大高速换电体系',
+            source: '证券时报',
+            url: 'https://www.stcn.com/article/detail/3669609.html'
+        },
+        {
+            id: 4,
+            brand: '比亚迪',
+            campaign: '春节档《飞驰人生3》深度植入',
+            type: '娱乐营销',
+            period: '2026年春节',
+            summary: '从"背景板工具车"升级为"推动剧情的核心角色"，实现品牌与内容的深度融合，春节档电影成为车企营销最爆阵地',
+            keyPoints: ['深度剧情植入', '角色绑定而非场景露出', '春节档流量红利'],
+            platforms: ['电影银幕', '社交媒体', '短视频二创'],
+            effect: '上亿预算厮杀春节档，品牌声量大幅提升',
+            source: '汽车商业评论',
+            url: 'https://m-new.inabr.com/news/22395'
+        },
+        {
+            id: 5,
+            brand: '理想汽车',
+            campaign: '家庭场景内容营销',
+            type: '内容营销',
+            period: '2025-2026年',
+            summary: '聚焦"奶爸车"定位，通过家庭出行场景的内容创作，在小红书、抖音等平台建立"家庭用车首选"认知',
+            keyPoints: ['家庭场景深度绑定', 'KOC真实体验分享', '亲子内容矩阵'],
+            platforms: ['小红书', '抖音', '视频号'],
+            effect: '2025年交付40.63万辆，2026年目标50万辆',
+            source: '新浪财经',
+            url: 'https://finance.sina.com.cn/jjxw/2026-03-12/doc-inhqtyyf8368176.shtml'
+        }
+    ]
+};
+
+// 2. KOL/KOC资源库
+DATA_SOURCE.influencer = {
+    categoryName: 'KOL资源',
+    lastUpdate: '2026-04-21',
+    tiers: {
+        top: { name: '头部达人', followers: '1000万+', avgPrice: '80-200万/条' },
+        mid: { name: '腰部达人', followers: '100-1000万', avgPrice: '10-50万/条' },
+        micro: { name: 'KOC', followers: '1-100万', avgPrice: '0.5-5万/条' }
+    },
+    list: [
+        {
+            id: 1,
+            name: '陈震同学',
+            platform: '抖音/微博/B站',
+            followers: '2400万+',
+            tier: 'top',
+            specialty: '专业车评/越野/赛车',
+            tags: ['专业测评', '越野路书', '赛车手背景'],
+            brands: ['理想', '蔚来', '小米', '比亚迪'],
+            avgPrice: '100-150万/条',
+            source: '抖音官方',
+            url: 'https://www.douyin.com/user/MS4wLjABAAAAoGECTWVaIvPSjM9cLrM_r7WcuNPOPETZEUZDbq5Bl4w'
+        },
+        {
+            id: 2,
+            name: '韩路',
+            platform: '抖音/B站/微博',
+            followers: '1800万+',
+            tier: 'top',
+            specialty: '专业测评/自驾穿越',
+            tags: ['汽车之家元老', '专业测评', '自驾游'],
+            brands: ['坦克', '路虎', '奔驰', '宝马'],
+            avgPrice: '80-120万/条',
+            source: '汽车之家',
+            url: 'https://chejiahao.autohome.com.cn/info/7601311'
+        },
+        {
+            id: 3,
+            name: 'YYP颜宇鹏',
+            platform: '抖音/B站/视频号',
+            followers: '1200万+',
+            tier: 'top',
+            specialty: '专业车评/驾驶体验',
+            tags: ['新车评网创始人', '温和派车评', '驾驶体验'],
+            brands: ['丰田', '本田', '比亚迪', '小鹏'],
+            avgPrice: '60-100万/条',
+            source: '新车评网',
+            url: 'https://www.xincheping.com'
+        },
+        {
+            id: 4,
+            name: '虎哥说车',
+            platform: '抖音/快手',
+            followers: '3500万+',
+            tier: 'top',
+            specialty: '汽车知识/搞笑短剧',
+            tags: ['汽车知识科普', '幽默风格', '下沉市场'],
+            brands: ['五菱', '长安', '吉利', '奇瑞'],
+            avgPrice: '120-180万/条',
+            source: '抖音官方',
+            url: 'https://www.douyin.com'
+        },
+        {
+            id: 5,
+            name: '小刚学长',
+            platform: '抖音/B站',
+            followers: '800万+',
+            tier: 'mid',
+            specialty: '新能源测评/科技解读',
+            tags: ['新能源专精', '科技硬核', '年轻群体'],
+            brands: ['特斯拉', '蔚来', '小米', '极氪'],
+            avgPrice: '30-50万/条',
+            source: '抖音汽车榜',
+            url: 'https://www.douyin.com'
+        },
+        {
+            id: 6,
+            name: '电动知士',
+            platform: '小红书/抖音',
+            followers: '300万+',
+            tier: 'mid',
+            specialty: '新能源车/女性向内容',
+            tags: ['女性车主', '新能源科普', '用车体验'],
+            brands: ['欧拉', ' smart', '五菱', '比亚迪'],
+            avgPrice: '15-25万/条',
+            source: '小红书',
+            url: 'https://www.xiaohongshu.com'
+        }
+    ]
+};
+
+// 3. 媒体投放数据
+DATA_SOURCE.media = {
+    categoryName: '媒体投放',
+    lastUpdate: '2026-04-21',
+    trends: {
+        title: '2026年汽车营销投放趋势',
+        summary: '新能源汽车渗透率突破59%，L2+智驾车型渗透率超32%，用户83%的购车决策信息来自大模型问答与智能推荐，超70%预算投向移动端',
+        source: '2026中国汽车AI营销白皮书',
+        url: 'https://www.sohu.com/a/1005019041_121315514'
+    },
+    budget: {
+        title: '车企营销预算分配',
+        totalGrowth: '年均增长18%',
+        effectAdsRatio: '54.1%',
+        mobileRatio: '60%+',
+        keyInsight: '效果广告投放费用占比达54.1%，较2022年上升18.3个百分点；媒介数量下降19.5%，向头部平台集中'
+    },
+    platforms: [
+        {
+            name: '抖音',
+            type: '短视频',
+            autoBrands: 50,
+            avgSpend: '头部品牌月均500-2000万',
+            advantage: '精准算法推荐/年轻用户/转化率高',
+            trend: '直播卖车兴起，KOL矩阵投放常态化'
+        },
+        {
+            name: '小红书',
+            type: '种草社区',
+            autoBrands: 45,
+            avgSpend: '头部品牌月均300-1000万',
+            advantage: '女性用户/高净值/种草力强',
+            trend: '女性车主群体崛起，KOC矩阵成标配'
+        },
+        {
+            name: '微博',
+            type: '社交媒体',
+            autoBrands: 48,
+            avgSpend: '头部品牌月均400-1500万',
+            advantage: '话题引爆/明星合作/舆论阵地',
+            trend: '热搜营销+明星代言仍是主流打法'
+        },
+        {
+            name: 'B站',
+            type: '中长视频',
+            autoBrands: 35,
+            avgSpend: '头部品牌月均200-800万',
+            advantage: '年轻用户/深度内容/科技感强',
+            trend: '适合新能源、智能车品牌深度种草'
+        },
+        {
+            name: '汽车垂直媒体',
+            type: '专业媒体',
+            autoBrands: 40,
+            avgSpend: '头部品牌月均300-1200万',
+            advantage: '购车决策/专业测评/精准人群',
+            trend: '汽车之家、懂车帝、易车仍是必争之地'
+        }
+    ]
+};
+
+// 4. 社媒声量监测
+DATA_SOURCE.social = {
+    categoryName: '社媒声量',
+    lastUpdate: '2026-04-21',
+    brandRanking: [
+        { rank: 1, brand: '比亚迪', mentionIndex: 100, growth: '+23%', hotTopics: ['销量冠军', '技术领先', '出海扩张'] },
+        { rank: 2, brand: '小米汽车', mentionIndex: 95, growth: '+156%', hotTopics: ['YU7上市', '雷军IP', '智能化'] },
+        { rank: 3, brand: '华为鸿蒙智行', mentionIndex: 88, growth: '+45%', hotTopics: ['五界布局', '智驾技术', '余承东'] },
+        { rank: 4, brand: '特斯拉', mentionIndex: 82, growth: '-8%', hotTopics: ['销量下滑', 'FSD入华', '价格战'] },
+        { rank: 5, brand: '理想汽车', mentionIndex: 78, growth: '+12%', hotTopics: ['家庭定位', 'MEGA争议', '纯电转型'] }
+    ],
+    platformData: {
+        weibo: {
+            topHashtags: ['#小米YU7#', '#鸿蒙智行#', '#比亚迪销量#', '#特斯拉降价#', '#理想MEGA#'],
+            trend: '热搜营销仍是品牌必争之地，话题阅读量动辄破亿'
+        },
+        douyin: {
+            topTopics: ['新能源车测评', '智能驾驶体验', '汽车知识科普', '车主真实分享'],
+            trend: '短视频种草成为新车上市标配，KOL矩阵投放常态化'
+        },
+        xiaohongshu: {
+            topTopics: ['女生第一辆车', '电车还是油车', '20万买什么车', '带娃出行车'],
+            trend: '女性车主决策影响力提升，家庭场景内容受欢迎'
+        }
+    }
+};
+
+// 5. 竞品媒介分析
+DATA_SOURCE.competitor = {
+    categoryName: '竞品分析',
+    lastUpdate: '2026-04-21',
+    comparison: [
+        {
+            brand: '小米汽车',
+            positioning: '科技智能/年轻群体',
+            keyMessage: '人车家全生态/智能驾驶',
+            mainPlatforms: ['抖音', '微博', '小红书', 'B站'],
+            budgetLevel: '高（雷军IP免费流量）',
+            differentiation: '雷军个人IP+互联网打法+生态联动'
+        },
+        {
+            brand: '华为鸿蒙智行',
+            positioning: '高端智能/技术领先',
+            keyMessage: '遥遥领先/智驾第一',
+            mainPlatforms: ['微博', '抖音', '视频号', '线下'],
+            budgetLevel: '高（华为品牌背书）',
+            differentiation: '华为技术赋能+余承东IP+五界协同'
+        },
+        {
+            brand: '比亚迪',
+            positioning: '国民品牌/技术普及',
+            keyMessage: '技术为王/全球销冠',
+            mainPlatforms: ['抖音', '微博', '小红书', 'B站'],
+            budgetLevel: '极高（行业第一）',
+            differentiation: '垂直整合/价格优势/产品矩阵最全'
+        },
+        {
+            brand: '理想汽车',
+            positioning: '家庭首选/奶爸车',
+            keyMessage: '创造移动的家/家庭用车',
+            mainPlatforms: ['小红书', '抖音', '微博'],
+            budgetLevel: '中高',
+            differentiation: '家庭场景聚焦/产品定义精准/增程路线'
+        },
+        {
+            brand: '蔚来',
+            positioning: '高端服务/换电生态',
+            keyMessage: '为用户创造愉悦生活方式',
+            mainPlatforms: ['微博', '小红书', '抖音', 'App'],
+            budgetLevel: '中高',
+            differentiation: '换电模式/服务体验/用户运营'
+        }
+    ]
+};
+
+// 6. 营销节点日历
+DATA_SOURCE.calendar = {
+    categoryName: '营销日历',
+    lastUpdate: '2026-04-21',
+    autoShows: [
+        {
+            name: '2026北京国际车展',
+            date: '2026年4月24日-5月3日',
+            venue: '中国国际展览中心顺义馆+首都国际会展中心',
+            type: 'A级车展',
+            highlights: ['全球首发车型超50款', '新能源与智能网联专区8万㎡', '华为、小米、比亚迪重磅参展'],
+            source: '北京车展官网',
+            url: 'https://www.autochinashow.org/'
+        },
+        {
+            name: '2026成都国际车展',
+            date: '2026年8月21日-8月30日',
+            venue: '西部国际博览城',
+            type: 'A级车展',
+            highlights: ['展览面积15万㎡', '西部市场风向标', '新能源车占比超60%'],
+            source: '成都车展官网',
+            url: 'https://www.jufair.com/exhibition/450.html'
+        },
+        {
+            name: '2026广州国际车展',
+            date: '2026年11月27日-12月6日',
+            venue: '琶洲会展中心',
+            type: 'A级车展',
+            highlights: ['年度收官车展', '新车型发布集中', '年度销量冲刺节点'],
+            source: '广州车展官网',
+            url: 'http://www.autosanghai.com/'
+        }
+    ],
+    marketingNodes: [
+        { month: '4月', node: '北京车展', type: '车展', significance: '全年最重要车展，新品发布集中' },
+        { month: '5月', node: '五一黄金周', type: '促销', significance: '传统促销节点，适合价格营销' },
+        { month: '6月', node: '618年中大促', type: '电商', significance: '线上引流+线下转化' },
+        { month: '8月', node: '成都车展', type: '车展', significance: '西部市场发力，金九银十预热' },
+        { month: '9-10月', node: '金九银十', type: '促销', significance: '全年销售旺季，冲量关键期' },
+        { month: '11月', node: '双11/广州车展', type: '电商+车展', significance: '年底冲量，清库存' },
+        { month: '12月', node: '年终冲量', type: '促销', significance: '全年目标冲刺，价格优惠最大' }
+    ],
+    newCarLaunches: [
+        { date: '2026-04-22', brand: '鸿蒙智行', model: '尚界Z7/Z7T、智界V9', type: '发布会' },
+        { date: '2026-04月', brand: '小米', model: 'YU7', type: '上市' },
+        { date: '2026-Q2', brand: '蔚来', model: 'ET9、新款ES6', type: '交付/改款' },
+        { date: '2026-Q3', brand: '理想', model: '纯电旗舰', type: '首发' }
     ]
 };
 
