@@ -21,7 +21,7 @@
 const DATA_SOURCE = {
     // 当前使用真实搜索数据（2026年4月）
     lastUpdate: '2026-04-21',
-    version: '2.0',
+    version: '2.1',
     description: '汽车行业资讯+媒介策略资源库',
     
     // 真实汽车资讯数据 - 覆盖全行业（50+条）
@@ -254,6 +254,162 @@ const DATA_SOURCE = {
             date: '2026-01-15',
             source: '新华财经',
             url: 'http://www.news18a.com/news/storys_234748.html'
+        },
+        
+        // ========== 豪华品牌（BBA/保时捷等） ==========
+        {
+            id: 114,
+            category: 'company',
+            categoryName: '企业新闻',
+            title: '保时捷宣布重大战略调整：延后纯电计划，重新聚焦内燃机与混动',
+            summary: '多重压力下，保时捷近日宣布重大战略调整，在延后部分纯电动车型的上市计划的同时，重新聚焦内燃机与混合动力车型。原定于2030年代推出的电动平台研发计划也将重新规划时间表。',
+            date: '2026-04-21',
+            source: '电子工程专辑',
+            url: 'https://www.eet-china.com/mp/a441105.html'
+        },
+        {
+            id: 115,
+            category: 'company',
+            categoryName: '企业新闻',
+            title: '奔驰"赢回中国"策略遭投资者质疑：过于强调豪华定位或将适得其反',
+            summary: '投资者对梅赛德斯-奔驰在中国市场的复苏路径提出质疑，并警告称，过于强调豪华定位可能影响其重新赢回中国消费者的能力。与宝马、奥迪类似，奔驰在中国市场份额持续下滑。',
+            date: '2026-04-21',
+            source: '新浪科技',
+            url: 'https://finance.sina.com.cn/tech/digi/2026-04-21/doc-inhvayqm8650472.shtml'
+        },
+        {
+            id: 116,
+            category: 'newcar',
+            categoryName: '新车发布',
+            title: '全新宝马iX3长轴距版将于4月24日亮相，尺寸升级，续航超900公里',
+            summary: '全新宝马iX3长轴距版将正式亮相于2026北京车展。作为基于宝马新世代平台（Neue Klasse）打造的首款车型，新车主要针对尺寸、续航与智能系统进行升级，并将于今年下半年正式上市。',
+            date: '2026-04-21',
+            source: '汽车之家',
+            url: 'https://chejiahao.autohome.com.cn/info/24775416'
+        },
+        {
+            id: 117,
+            category: 'market',
+            categoryName: '市场热点',
+            title: '德系豪华车一季度在华销量普遍下滑，奔驰宝马奥迪集体承压',
+            summary: '梅赛德斯-奔驰、宝马、奥迪及保时捷均报告在华交付量大幅下降，主因包括激烈的市场竞争。梅赛德斯-奔驰称，2026年是其在中国这一全球最大汽车市场的"过渡之年"。',
+            date: '2026-04-21',
+            source: 'Moomoo',
+            url: 'https://www.moomoo.com/hant/news/post/68263459'
+        },
+        {
+            id: 118,
+            category: 'market',
+            categoryName: '市场热点',
+            title: '2026年一季度豪华车市场销量57.4万台，同比下滑10.5%',
+            summary: '2026年一季度，外资豪华品牌在中国市场整体销量57.4万台，同比下滑10.5%。大部分豪华车企的重点围绕出口和做高端，但外资豪华品牌在中国交出的成绩单比较一般。',
+            date: '2026-04-21',
+            source: 'EDN电子技术设计',
+            url: 'https://www.ednchina.com/technews/39679.html'
+        },
+        
+        // ========== 合资品牌（丰田/本田/大众等） ==========
+        {
+            id: 119,
+            category: 'company',
+            categoryName: '企业新闻',
+            title: '丰田连续六年击败大众蝉联全球销冠，2025年销量超千万辆',
+            summary: '丰田汽车以逾千万辆的成绩实现六连冠，而大众集团连续6年位列第二。比亚迪2025年销量460万辆，超越福特和日产，首次跻身全球第六；吉利汽车销量411万辆，超越本田位居全球第八。',
+            date: '2026-04-21',
+            source: '新能源汽车',
+            url: 'https://nev.ofweek.com/2026-04/ART-71008-8420-30684222.html'
+        },
+        {
+            id: 120,
+            category: 'company',
+            categoryName: '企业新闻',
+            title: '大众2025财年营业利润暴跌53.5%，将在德裁减5万个岗位',
+            summary: '2026年春，全球传统汽车工业现结构性危机。大众2025财年营业利润暴跌53.5%，税后净利润近乎腰斩，将在德裁减5万个岗位。本田2025财年预计净亏损4200亿日元。',
+            date: '2026-04-21',
+            source: '新浪财经',
+            url: 'https://finance.sina.com.cn/wm/2026-03-19/doc-inhrpfxy1536140.shtml'
+        },
+        {
+            id: 121,
+            category: 'market',
+            categoryName: '市场热点',
+            title: '美国关税重创汽车业：丰田预估损失91亿美元，全球车企损失超350亿美元',
+            summary: '在截至2026年3月31日的财年中，丰田预估关税相关成本将达到1.45万亿日元，约合91亿美元，远超其他竞争对手。美国本土的底特律三巨头——通用、福特、Stellantis在2025年同样受到严重冲击。',
+            date: '2026-04-21',
+            source: '盖世汽车',
+            url: 'https://auto.gasgoo.com/news/202603/17I70450490C109.shtml'
+        },
+        {
+            id: 122,
+            category: 'company',
+            categoryName: '企业新闻',
+            title: '2026合资车企大逃杀：一季度走量的只有大众+丰田',
+            summary: '一季度对合资品牌的经营产生了巨大的冲击，走量的目前只有大众+丰田，走合适规模的有通用+日产，围绕自己的优势品类，本田还在思考怎么办。豪华品牌同样面临巨大压力。',
+            date: '2026-04-21',
+            source: '腾讯新闻',
+            url: 'https://news.qq.com/rain/a/20260413A0298000'
+        },
+        {
+            id: 123,
+            category: 'market',
+            categoryName: '市场热点',
+            title: '福特电动汽车销量暴跌70%，大众电动车销量暴跌近90%',
+            summary: '福特电动汽车销量暴跌70%，宝马跌幅超60%，大众近乎崩盘暴跌近90%。本田近期已将战略重心调整。美国市场的关税政策和需求疲软对传统车企电动车业务造成巨大冲击。',
+            date: '2026-04-21',
+            source: '百度有驾',
+            url: 'https://youjia.baidu.com/view/articleDetail/9403956702842593853'
+        },
+        
+        // ========== 新势力二线品牌 ==========
+        {
+            id: 124,
+            category: 'company',
+            categoryName: '企业新闻',
+            title: '极氪8X上市不到半小时大定突破1万台，平均订单价格超40万元',
+            summary: '官方披露，极氪8X上市不到半小时大定已突破1万台，其中Ultra版及以上占比95.6%，平均订单价格超过40万元。从产品定位看，极氪8X瞄准的是传统豪华品牌长期占据的高端市场。',
+            date: '2026-04-21',
+            source: '新浪汽车',
+            url: 'https://k.sina.com.cn/article_7857201856_1d45362c001904hrss.html'
+        },
+        {
+            id: 125,
+            category: 'company',
+            categoryName: '企业新闻',
+            title: '零跑汽车2月交付28067台，位列新势力销量榜首',
+            summary: '零跑汽车2月交付28067台，环比下降12.5%，同比上涨11%，位列新势力销量榜首。作为2026年中国新能源汽车行业的最大"黑马"，零跑汽车以极致性价比策略持续扩大市场份额。',
+            date: '2026-04-21',
+            source: '爱卡汽车',
+            url: 'https://aikahao.xcar.com.cn/item/3743117.html'
+        },
+        {
+            id: 126,
+            category: 'newcar',
+            categoryName: '新车发布',
+            title: '2026款零跑C10开启预售，预售价格12.98-14.98万元',
+            summary: '4月30日，零跑汽车正式宣布2026款C10开启预售，预售价格区间为12.98-14.98万元，全系共推出4款配置车型，以及增程和纯电两种动力可选，继续主打极致性价比。',
+            date: '2026-04-21',
+            source: 'BitAuto',
+            url: 'https://www.bitauto.com/zh-us/news/1003100183624.html'
+        },
+        {
+            id: 127,
+            category: 'company',
+            categoryName: '企业新闻',
+            title: '岚图汽车2026年加速布局高端市场，将推出"50万级最强豪华MPV"',
+            summary: '2026年，岚图汽车将完成MPV系列化布局，重磅加推一款"50万级最强豪华MPV"，代号"珠峰"，与岚图梦想家形成组合，剑指全品类MPV销冠及全球新能源MPV引领者地位。',
+            date: '2026-04-21',
+            source: '新华网',
+            url: 'http://www.news.cn/auto/20260129/183f13c7326442e9a79e5e46cb84059f/c.html'
+        },
+        {
+            id: 128,
+            category: 'newcar',
+            categoryName: '新车发布',
+            title: '哪吒L发布：定位于家庭智能超级增程SUV，综合续航1300km',
+            summary: '哪吒在4月20日发布哪吒L，定位于家庭智能超级增程SUV，把性价比做到了极致，比如纯电续航超过300公里，搭载40度宁德时代电芯闪充大电池，综合续航1300km。',
+            date: '2026-04-21',
+            source: '界面新闻',
+            url: 'https://www.jiemian.com/article/11134604.html'
         },
         
         // ========== 自动驾驶 ==========
@@ -1570,7 +1726,191 @@ DATA_SOURCE.calendar = {
     ]
 };
 
+// =====================================================
+// 新增模块：行业报告/白皮书（2026-04-22更新）
+// =====================================================
+DATA_SOURCE.industryReports = [
+    {
+        id: 'report_001',
+        title: '《中国寿险代理人高质量转型白皮书（2026）：迈向新范式》',
+        institution: '平安人寿 × 清华大学经济管理学院',
+        publishDate: '2026-04-13',
+        category: '保险行业',
+        summary: '基于覆盖全国316个城市的大规模行业调研，首次系统构建寿险代理人"四位一体"能力模型，全景描绘"千里骏马"人才画像。研究基于12,001份客户问卷与5,214份潜在人才问卷，提出未来代理人应具备专业深度、资源广度、科技敏度与价值交付力四大核心能力。',
+        keyFindings: [
+            '行业核心矛盾已从"规模与质量的冲突"演变为"客户对综合性风险管理解决方案的迫切需求与传统销售能力之间的系统性能力代差"',
+            '提出"四位一体"能力体系：专业深度、资源广度、科技敏度、价值交付力',
+            '构建"千里骏马"人才画像，推动代理人从"保险销售者"向"家庭风险管理伙伴"转型',
+            '提出价值锚定、组织激励、培养体系、科技加持与生态赋能"五大支柱"赋能体系'
+        ],
+        source: '人民网财经',
+        url: 'http://finance.people.com.cn/n1/2026/0413/c1004-40700439.html',
+        communications: {
+            official: {
+                launchEvent: {
+                    date: '2026-03-23',
+                    location: '海南三亚',
+                    description: '清华大学经济管理学院中国保险与风险管理研究中心联合平安人寿正式发布',
+                    url: 'https://www.sem.tsinghua.edu.cn/fin/info/1005/1979.htm'
+                },
+                pressRelease: [
+                    { platform: '平安人寿官网', url: 'https://life.pingan.com' },
+                    { platform: '清华大学经管学院官网', url: 'https://www.sem.tsinghua.edu.cn' }
+                ]
+            },
+            mediaCoverage: [
+                {
+                    type: '央媒',
+                    outlet: '人民网财经',
+                    title: '平安人寿联合清华大学发布中国寿险代理人高质量转型白皮书',
+                    date: '2026-04-13',
+                    url: 'http://finance.people.com.cn/n1/2026/0413/c1004-40700439.html'
+                },
+                {
+                    type: '门户网站',
+                    outlet: '搜狐财经',
+                    title: '平安人寿联合清华大学发布中国寿险代理人高质量转型白皮书',
+                    date: '2026-04-13',
+                    url: 'https://www.sohu.com/a/1008986256_120914498'
+                },
+                {
+                    type: '财经媒体',
+                    outlet: '新浪财经',
+                    title: '平安人寿发布《中国寿险代理人高质量转型白皮书》 首次系统构建寿险代理人"四位一体"能力模型',
+                    date: '2026-04-17',
+                    url: 'https://finance.sina.com.cn/stock/relnews/hk/2026-04-17/doc-inhuuccs1155250.shtml'
+                },
+                {
+                    type: '地方媒体',
+                    outlet: '福建新浪',
+                    title: '平安人寿联合清华大学发布中国寿险代理人高质量转型白皮书',
+                    date: '2026-04-12',
+                    url: 'https://fj.sina.com.cn/news/2026-04-12/detail-inhufqry6526198.shtml'
+                },
+                {
+                    type: '行业媒体',
+                    outlet: '中华网',
+                    title: '平安人寿联合清华大学发布中国寿险代理人高质量转型白皮书',
+                    date: '2026-04-12',
+                    url: 'https://hea.china.com/articles/20260412/202604121844949.html'
+                }
+            ],
+            academic: {
+                researchCenter: '清华大学经济管理学院中国保险与风险管理研究中心',
+                leadResearcher: '冯润桓（讲席教授、中心主任）',
+                researchMethodology: '覆盖全国316个城市的双向调研，回收有效客户问卷12,001份、潜在人才问卷5,214份',
+                academicPartners: ['清华大学经济管理学院']
+            },
+            socialMedia: {
+                wechat: {
+                    officialAccounts: ['平安人寿', '清华大学经济管理学院'],
+                    contentType: '白皮书解读 + 高管观点 + 人才计划介绍'
+                },
+                weibo: {
+                    topics: ['#寿险代理人转型#', '#平安人寿高才计划#'],
+                    kols: ['保险行业大V', '财经评论员']
+                },
+                videoPlatforms: {
+                    channels: ['平安人寿视频号', '清华大学经管学院视频号'],
+                    contentType: '发布会现场 + 专家解读 + 代理人故事'
+                }
+            },
+            corporateCommunications: {
+                executiveStatements: [
+                    {
+                        speaker: '蔡霆（平安人寿副董事长兼副总经理）',
+                        keyMessage: '通过"平台好、人才好、成绩好、未来好"四个关键词阐述平安寿险代理人高质量转型核心逻辑',
+                        highlights: [
+                            '年度专项投入5亿元聚焦高才招募与培养',
+                            '提供高额财务补贴覆盖全周期',
+                            '实现"一人一策"精准培育',
+                            '紧扣居民财富迁徙、大健康及银发经济三大万亿级机遇'
+                        ]
+                    },
+                    {
+                        speaker: '冯润桓（清华大学经济管理学院讲席教授）',
+                        keyMessage: '用严谨学术研究为处于历史关口的中国寿险业提供客观、前瞻的行动参考',
+                        quote: '我们希望以数据呈现转型的紧迫性，以框架探讨职业化的路径'
+                    }
+                ],
+                productIntegration: {
+                    program: '保险康养顾问-高才计划',
+                    launchDate: '2025-06',
+                    features: ['职涯发展', '技能提升', '客户服务', '产品覆盖'],
+                    investment: '2026年年度专项投入5亿元'
+                }
+            }
+        }
+    }
+];
+
+// =====================================================
+// 新增模块：搜索功能（2026-04-22更新）
+// =====================================================
+const SearchUtils = {
+    // 搜索所有内容
+    search: function(keyword) {
+        if (!keyword || keyword.trim() === '') return [];
+        
+        const results = [];
+        const lowerKeyword = keyword.toLowerCase();
+        
+        // 搜索新闻
+        DATA_SOURCE.news.forEach(item => {
+            if (this._match(item, lowerKeyword)) {
+                results.push({ type: 'news', category: item.categoryName, ...item });
+            }
+        });
+        
+        // 搜索营销案例
+        DATA_SOURCE.marketing.cases.forEach(item => {
+            if (this._matchCase(item, lowerKeyword)) {
+                results.push({ type: 'marketing', ...item });
+            }
+        });
+        
+        // 搜索KOL
+        DATA_SOURCE.influencer.list.forEach(item => {
+            if (this._matchInfluencer(item, lowerKeyword)) {
+                results.push({ type: 'influencer', ...item });
+            }
+        });
+        
+        // 搜索行业报告
+        DATA_SOURCE.industryReports.forEach(item => {
+            if (this._matchReport(item, lowerKeyword)) {
+                results.push({ type: 'report', ...item });
+            }
+        });
+        
+        return results.slice(0, 20); // 最多返回20条
+    },
+    
+    _match: function(item, keyword) {
+        return (item.title && item.title.toLowerCase().includes(keyword)) ||
+               (item.summary && item.summary.toLowerCase().includes(keyword)) ||
+               (item.source && item.source.toLowerCase().includes(keyword));
+    },
+    
+    _matchCase: function(item, keyword) {
+        return (item.name && item.name.toLowerCase().includes(keyword)) ||
+               (item.brand && item.brand.toLowerCase().includes(keyword)) ||
+               (item.tags && item.tags.some(t => t.toLowerCase().includes(keyword)));
+    },
+    
+    _matchInfluencer: function(item, keyword) {
+        return (item.name && item.name.toLowerCase().includes(keyword)) ||
+               (item.platform && item.platform.toLowerCase().includes(keyword)) ||
+               (item.tags && item.tags.some(t => t.toLowerCase().includes(keyword)));
+    },
+    
+    _matchReport: function(item, keyword) {
+        return (item.title && item.title.toLowerCase().includes(keyword)) ||
+               (item.institution && item.institution.toLowerCase().includes(keyword));
+    }
+};
+
 // 导出数据
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = DATA_SOURCE;
+    module.exports = { DATA_SOURCE, SearchUtils };
 }
