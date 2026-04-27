@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>车讯通 v2.5 - 汽车行业资讯与媒介资源库</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card { transition: all 0.3s ease; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .nav-item.active { background: rgba(102, 126, 234, 0.1); color: #667eea; border-right: 3px solid #667eea; }
+        .fade-in { animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .search-input:focus { box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div id="app" class="min-h-screen">
+        <!-- Header -->
+        <header class="gradient-bg text-white shadow-lg">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-car text-3xl"></i>
+                        <div>
+                            <h1 class="text-2xl font-bold">车讯通</h1>
+                            <p class="text-sm opacity-90">汽车行业资讯与媒介资源库</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">v2.5</span>
+                        <span class="text-sm opacity-80">2026-04-27更新</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="flex">
+            <!-- Sidebar -->
+            <aside class="w-64 bg-white shadow-lg min-h-screen">
+                <nav class="p-4 space-y-2">
+                    <a href="#overview" class="nav-item active flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition">
+                        <i class="fas fa-home w-5"></i>
+                        <span>概览</span>
+                    </a>
+                    <a href="#news" class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition">
+                        <i class="fas fa-newspaper w-5"></i>
+                        <span>汽车资讯</span>
+                    </a>
+                    <a href="#bids" class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition">
+                        <i class="fas fa-file-contract w-5"></i>
+                        <span>标书商机</span>
+                    </a>
+                    <a href="#influencer" class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition">
+                        <i class="fas fa-users w-5"></i>
+                        <span>KOL资源</span>
+                    </a>
+                    <a href="#glossary" class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition">
+                        <i class="fas fa-book w-5"></i>
+                        <span>词条百科</span>
+                    </a>
+                    <a href="#media" class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition">
+                        <i class="fas fa-chart-bar w-5"></i>
+                        <span>媒体投放</span>
+                    </a>
+                    <a href="#social" class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition">
+                        <i class="fas fa-hashtag w-5"></i>
+                        <span>社媒声量</span>
+                    </a>
+                    <a href="#marketing" class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition">
+                        <i class="fas fa-bullhorn w-5"></i>
+                        <span>营销案例</span>
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="flex-1 p-8">
+                <!-- Search Bar -->
+                <div class="mb-8">
+                    <div class="relative max-w-2xl">
+                        <input type="text" id="searchInput" placeholder="搜索资讯、标书、KOL、词条..." 
+                            class="search-input w-full px-6 py-4 pl-14 bg-white rounded-xl shadow-sm border border-gray-200 focus:outline-none focus:border-indigo-500 transition">
+                        <i class="fas fa-search absolute left-5 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                </div>
+
+                <!-- Dynamic Content -->
+                <div id="content" class="fade-in">
+                    <!-- Content will be loaded here -->
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // 模拟数据（简化版，实际使用时可以通过fetch加载完整data.js）
+        const DATA_SOURCE = {
+            lastUpdate: '2026-04-27',
+            version: '2.5',
+            
+            news: [
+                { id: 1, title: '2026北京国际汽车展览会开幕，新能源车型成主角', category: '行业动态', date: '2026-04-24', source: '新浪财经', summary: '4月24日，2026北京国际汽车展览会在京开幕。本届车展以"突破·跃升"为主题...' },
+                { id: 2, title: '2025年中国汽车产销双双突破3400万辆，新能源占比超50%', category: '市场热点', date: '2026-04-27', source: '新华网', summary: '中国汽车工业协会发布数据显示，2025年我国汽车产销分别完成3453.1万辆和3440万辆...' },
+                { id: 3, title: '比亚迪4月销量37.3万辆领跑，小米YU7爆款预定', category: '市场热点', date: '2026-04-18', source: '新浪财经', summary: '比亚迪4月新能源汽车销量达372,615辆，环比增长0.3%，同比增长19.4%...' },
+                { id: 4, title: '胡峥楠出任小米汽车首位CTO，原特斯拉厂长宋钢任参谋长', category: '企业新闻', date: '2026-04-17', source: '新浪汽车', summary: '小米集团宣布两项人事任命：胡峥楠正式加入小米，出任集团副总裁、汽车部CTO...' },
+                { id: 5, title: '小鹏汽车Q4财报：交付116249辆创单季新高', category: '企业新闻', date: '2026-03-23', source: '新浪财经', summary: '小鹏汽车发布2025年第四季度财报，交付116,249辆新车，同比增长27.0%...' },
+                { id: 6, title: '理想汽车2026年目标：冲击50万年销', category: '企业新闻', date: '2026-03-12', source: '新浪财经', summary: '理想汽车CEO李想表示，2026年目标在2025年40.63万辆基础上实现超20%增长...' },
+                { id: 7, title: '蔚来明确2026年增长目标：销量增长40%-50%', category: '企业新闻', date: '2026-03-26', source: '证券时报', summary: '蔚来再次明确40%-50%的年销量增长目标，并立下2026年盈利目标...' },
+                { id: 8, title: '零跑汽车：2025年50万台目标提前完成', category: '企业新闻', date: '2026-04-27', source: '电子工程专辑', summary: '零跑汽车宣布2025年50万台销量目标提前完成，明年冲击100万辆...' }
+            ],
+            
+            bids: [
+                { id: 1, title: '26年零跑汽车DCC客服项目招标公告', platform: '零跑汽车', category: '客服服务', publishDate: '2026-04-23', deadline: '2026-05-07', status: '招标中' },
+                { id: 2, title: '零跑汽车2026年度智能外呼服务项目', platform: '零跑汽车', category: '数字营销', publishDate: '2026-04-22', deadline: '2026-05-06', status: '招标中' },
+                { id: 3, title: '寻源公告-零跑汽车整车四立柱性能试验', platform: '零跑汽车', category: '试验', publishDate: '2026-04-24', deadline: '2026-05-08', status: '寻源中' },
+                { id: 4, title: '2026年奕境汽车展厅广告机采购项目', platform: '东风汽车', category: '广告投放', publishDate: '2026-04-18', deadline: '2026-05-02', status: '招标中' },
+                { id: 5, title: '2025年AB级车展展具租赁及搭建运营项目', platform: '东风汽车', category: '活动策划', publishDate: '2026-04-22', deadline: '2026-05-06', status: '已中标' },
+                { id: 6, title: '2025年奇瑞集团制造中心捷豹路虎备件采购', platform: '奇瑞汽车', category: '采购', publishDate: '2026-04-22', deadline: '2026-05-06', status: '招标中' }
+            ],
+            
+            influencer: [
+                { id: 1, name: '虎哥说车', platform: '抖音/快手', followers: '3500万+', specialty: '汽车知识/搞笑短剧', avgPrice: '120-180万/条' },
+                { id: 2, name: '陈震同学', platform: '抖音/微博/B站', followers: '2400万+', specialty: '专业车评/越野/赛车', avgPrice: '100-150万/条' },
+                { id: 3, name: '韩路', platform: '抖音/B站/微博', followers: '1800万+', specialty: '专业测评/自驾穿越', avgPrice: '80-120万/条' },
+                { id: 4, name: 'YYP颜宇鹏', platform: '抖音/B站/视频号', followers: '1200万+', specialty: '专业车评/驾驶体验', avgPrice: '60-100万/条' },
+                { id: 5, name: '小刚学长', platform: '抖音/B站', followers: '800万+', specialty: '新能源测评/科技解读', avgPrice: '30-50万/条' },
+                { id: 6, name: '电动知士', platform: '小红书/抖音', followers: '300万+', specialty: '新能源车/女性向内容', avgPrice: '15-25万/条' }
+            ],
+            
+            glossary: [
+                { id: 1, term: 'NOA', fullName: 'Navigate on Autopilot', category: '技术趋势', definition: '自动导航辅助驾驶，特斯拉FSD的核心功能，可实现自动变道、自动上下匝道、自动超车等，是L2+级辅助驾驶的代表功能。' },
+                { id: 2, term: '800V高压平台', fullName: '800V High Voltage Platform', category: '技术趋势', definition: '电动车采用800V高压电气架构，相比传统400V平台，充电功率可翻倍，实现15分钟充电80%，同时降低能耗、提升续航。' },
+                { id: 3, term: 'CTC/CTB', fullName: 'Cell to Chassis/Body', category: '技术趋势', definition: '电池底盘一体化技术，将电芯直接集成到车辆底盘或车身中，省去模组和电池包外壳，提升空间利用率、降低成本、增强车身刚性。' },
+                { id: 4, term: '城市NOA', fullName: 'Navigate on Autopilot City', category: '技术趋势', definition: '城市导航辅助驾驶，可在城市道路实现自动导航驾驶，包括红绿灯识别、无保护左转、避让行人等复杂场景，是智能驾驶的最高水平。' },
+                { id: 5, term: '端到端大模型', fullName: 'End-to-End Large Model', category: '技术趋势', definition: '智能驾驶的新范式，用单个神经网络替代传统模块化方案，直接从传感器数据到控制指令，类似ChatGPT的思维模式，由特斯拉率先提出。' }
+            ],
+            
+            media: {
+                platforms: [
+                    { name: '抖音', type: '短视频', autoBrands: 50, avgSpend: '500-2000万/月', advantage: '精准算法推荐/年轻用户/转化率高' },
+                    { name: '小红书', type: '种草社区', autoBrands: 45, avgSpend: '300-1000万/月', advantage: '女性用户/高净值/种草力强' },
+                    { name: '微博', type: '社交媒体', autoBrands: 48, avgSpend: '400-1500万/月', advantage: '话题引爆/明星合作/舆论阵地' },
+                    { name: 'B站', type: '中长视频', autoBrands: 35, avgSpend: '200-800万/月', advantage: '年轻用户/深度内容/科技感强' },
+                    { name: '汽车垂直媒体', type: '专业媒体', autoBrands: 40, avgSpend: '300-1200万/月', advantage: '购车决策/专业测评/精准人群' }
+                ]
+            },
+            
+            social: {
+                brandRanking: [
+                    { rank: 1, brand: '比亚迪', mentionIndex: 100, growth: '+23%' },
+                    { rank: 2, brand: '小米汽车', mentionIndex: 95, growth: '+156%' },
+                    { rank: 3, brand: '华为鸿蒙智行', mentionIndex: 88, growth: '+45%' },
+                    { rank: 4, brand: '特斯拉', mentionIndex: 82, growth: '-8%' },
+                    { rank: 5, brand: '理想汽车', mentionIndex: 78, growth: '+12%' }
+                ]
+            },
+            
+            marketing: {
+                cases: [
+                    { id: 1, name: '小米SU7上市营销', brand: '小米汽车', highlight: '现象级新车发布，发布会观看人次破亿' },
+                    { id: 2, name: '问界M9发布会', brand: '华为鸿蒙智行', highlight: '余承东亲自站台，科技豪华定位' },
+                    { id: 3, name: '蔚来NIO Day', brand: '蔚来汽车', highlight: '用户型企业标签强化，社区运营标杆' }
+                ]
+            }
+        };
+
+        // 渲染函数
+        const render = {
+            overview: () => `
+                <div class="space-y-6">
+                    <div class="grid grid-cols-4 gap-6">
+                        <div class="bg-white p-6 rounded-xl shadow-sm card">
+                            <div class="text-3xl font-bold text-indigo-600">80+</div>
+                            <div class="text-gray-600 mt-1">汽车资讯</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm card">
+                            <div class="text-3xl font-bold text-indigo-600">30+</div>
+                            <div class="text-gray-600 mt-1">标书商机</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm card">
+                            <div class="text-3xl font-bold text-indigo-600">88</div>
+                            <div class="text-gray-600 mt-1">词条百科</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm card">
+                            <div class="text-3xl font-bold text-indigo-600">6</div>
+                            <div class="text-gray-600 mt-1">头部KOL</div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="text-xl font-bold mb-4">🎯 重点标书提醒</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-4 bg-red-50 rounded-lg border-l-4 border-red-500">
+                                <div>
+                                    <div class="font-semibold">26年零跑汽车DCC客服项目</div>
+                                    <div class="text-sm text-gray-600">截止：2026-05-07</div>
+                                </div>
+                                <span class="px-3 py-1 bg-red-500 text-white rounded-full text-sm">紧急</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-orange-50 rounded-lg border-l-4 border-orange-500">
+                                <div>
+                                    <div class="font-semibold">零跑汽车智能外呼服务项目</div>
+                                    <div class="text-sm text-gray-600">截止：2026-05-06</div>
+                                </div>
+                                <span class="px-3 py-1 bg-orange-500 text-white rounded-full text-sm">即将截止</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            
+            news: () => `
+                <h2 class="text-2xl font-bold mb-6">📰 汽车资讯</h2>
+                <div class="grid gap-4">
+                    ${DATA_SOURCE.news.map(item => `
+                        <div class="bg-white p-6 rounded-xl shadow-sm card">
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-2">
+                                        <span class="px-2 py-1 bg-indigo-100 text-indigo-600 rounded text-sm">${item.category}</span>
+                                        <span class="text-gray-400 text-sm">${item.date}</span>
+                                    </div>
+                                    <h3 class="text-lg font-semibold mb-2">${item.title}</h3>
+                                    <p class="text-gray-600 text-sm">${item.summary}</p>
+                                    <div class="mt-3 text-sm text-gray-400">来源：${item.source}</div>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `,
+            
+            bids: () => `
+                <h2 class="text-2xl font-bold mb-6">📋 标书商机</h2>
+                <div class="grid gap-4">
+                    ${DATA_SOURCE.bids.map(item => `
+                        <div class="bg-white p-6 rounded-xl shadow-sm card">
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-2">
+                                        <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-sm">${item.platform}</span>
+                                        <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm">${item.category}</span>
+                                    </div>
+                                    <h3 class="text-lg font-semibold mb-2">${item.title}</h3>
+                                    <div class="flex items-center space-x-6 text-sm text-gray-600">
+                                        <span><i class="far fa-calendar-alt mr-1"></i>发布：${item.publishDate}</span>
+                                        <span><i class="far fa-clock mr-1"></i>截止：${item.deadline}</span>
+                                    </div>
+                                </div>
+                                <span class="px-3 py-1 ${item.status === '招标中' ? 'bg-green-100 text-green-600' : item.status === '紧急' ? 'bg-red-100 text-red-600' : 'bg-gray-100 text-gray-600'} rounded-full text-sm">${item.status}</span>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `,
+            
+            influencer: () => `
+                <h2 class="text-2xl font-bold mb-6">👥 KOL/KOC资源</h2>
+                <div class="grid grid-cols-2 gap-6">
+                    ${DATA_SOURCE.influencer.map(item => `
+                        <div class="bg-white p-6 rounded-xl shadow-sm card">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                                    ${item.name.charAt(0)}
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-lg font-bold mb-1">${item.name}</h3>
+                                    <p class="text-gray-600 text-sm mb-2">${item.platform}</p>
+                                    <div class="flex items-center space-x-4 text-sm">
+                                        <span class="text-indigo-600 font-semibold">${item.followers}</span>
+                                        <span class="text-gray-500">${item.specialty}</span>
+                                    </div>
+                                    <div class="mt-3 px-3 py-2 bg-yellow-50 text-yellow-700 rounded-lg text-sm font-medium">
+                                        报价：${item.avgPrice}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `,
+            
+            glossary: () => `
+                <h2 class="text-2xl font-bold mb-6">📚 词条百科</h2>
+                <div class="grid gap-4">
+                    ${DATA_SOURCE.glossary.map(item => `
+                        <div class="bg-white p-6 rounded-xl shadow-sm card">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-book text-indigo-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-1">
+                                        <h3 class="text-lg font-bold">${item.term}</h3>
+                                        <span class="text-sm text-gray-400">${item.fullName}</span>
+                                    </div>
+                                    <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs mb-2">${item.category}</span>
+                                    <p class="text-gray-600 text-sm leading-relaxed">${item.definition}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `,
+            
+            media: () => `
+                <h2 class="text-2xl font-bold mb-6">📺 媒体投放数据</h2>
+                <div class="grid gap-6">
+                    ${DATA_SOURCE.media.platforms.map(item => `
+                        <div class="bg-white p-6 rounded-xl shadow-sm card">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">
+                                        ${item.name.charAt(0)}
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-bold">${item.name}</h3>
+                                        <p class="text-gray-500 text-sm">${item.type}</p>
+                                    </div>
+                                </div>
+                                <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">${item.autoBrands}个品牌投放</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 mt-4 pt-4 border-t">
+                                <div>
+                                    <div class="text-sm text-gray-500 mb-1">月均投放</div>
+                                    <div class="font-semibold">${item.avgSpend}</div>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-gray-500 mb-1">核心优势</div>
+                                    <div class="font-semibold text-sm">${item.advantage}</div>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `,
+            
+            social: () => `
+                <h2 class="text-2xl font-bold mb-6">📈 社媒声量监测</h2>
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <h3 class="text-lg font-semibold mb-4">品牌声量排名 TOP5</h3>
+                    <div class="space-y-4">
+                        ${DATA_SOURCE.social.brandRanking.map((item, index) => `
+                            <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg">
+                                <div class="w-8 h-8 ${index < 3 ? 'bg-yellow-500' : 'bg-gray-400'} rounded-full flex items-center justify-center text-white font-bold">
+                                    ${item.rank}
+                                </div>
+                                <div class="flex-1">
+                                    <div class="font-semibold">${item.brand}</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-bold">${item.mentionIndex}</div>
+                                    <div class="text-sm ${item.growth.startsWith('+') ? 'text-green-500' : 'text-red-500'}">${item.growth}</div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `,
+            
+            marketing: () => `
+                <h2 class="text-2xl font-bold mb-6">📢 营销案例库</h2>
+                <div class="grid gap-6">
+                    ${DATA_SOURCE.marketing.cases.map(item => `
+                        <div class="bg-white p-6 rounded-xl shadow-sm card">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-14 h-14 bg-gradient-to-br from-pink-500 to-orange-500 rounded-lg flex items-center justify-center text-white">
+                                    <i class="fas fa-bullhorn text-xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-1">
+                                        <span class="px-2 py-1 bg-pink-100 text-pink-600 rounded text-sm">${item.brand}</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold mb-2">${item.name}</h3>
+                                    <p class="text-gray-600">${item.highlight}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `
+        };
+
+        // 路由控制
+        const router = {
+            current: 'overview',
+            navigate(page) {
+                this.current = page;
+                document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+                document.querySelector(`a[href="#${page}"]`).classList.add('active');
+                document.getElementById('content').innerHTML = render[page]();
+                window.scrollTo(0, 0);
+            }
+        };
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            // 导航点击
+            document.querySelectorAll('.nav-item').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const page = link.getAttribute('href').slice(1);
+                    router.navigate(page);
+                });
+            });
+
+            // 搜索功能
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                const keyword = e.target.value.toLowerCase();
+                if (keyword.length > 0) {
+                    // 搜索所有数据
+                    const results = [];
+                    DATA_SOURCE.news.forEach(item => {
+                        if (item.title.toLowerCase().includes(keyword) || item.summary.toLowerCase().includes(keyword)) {
+                            results.push({ type: '资讯', title: item.title });
+                        }
+                    });
+                    DATA_SOURCE.bids.forEach(item => {
+                        if (item.title.toLowerCase().includes(keyword)) {
+                            results.push({ type: '标书', title: item.title });
+                        }
+                    });
+                    
+                    if (results.length > 0) {
+                        document.getElementById('content').innerHTML = `
+                            <h2 class="text-2xl font-bold mb-6">🔍 搜索结果</h2>
+                            <div class="space-y-3">
+                                ${results.slice(0, 10).map(r => `
+                                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                                        <span class="px-2 py-1 bg-indigo-100 text-indigo-600 rounded text-sm mr-2">${r.type}</span>
+                                        <span>${r.title}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `;
+                    }
+                } else {
+                    router.navigate(router.current);
+                }
+            });
+
+            // 默认显示概览
+            router.navigate('overview');
+        });
+    </script>
+</body>
+</html>
