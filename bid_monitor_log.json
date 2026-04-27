@@ -1,0 +1,137 @@
+{
+  "lastUpdate": "2026-04-27",
+  "totalChecks": 3,
+  "platforms": {
+    "leapmotor": {
+      "name": "零跑汽车",
+      "lastCheck": "2026-04-27T10:00:00+08:00",
+      "status": "success",
+      "newBids": [
+        {
+          "id": "leapmotor_20260424_001",
+          "title": "寻源公告-零跑汽车整车四立柱性能试验",
+          "publishDate": "2026-04-24",
+          "deadline": "2026-05-08",
+          "category": "试验",
+          "keywords": ["试验", "整车", "性能"],
+          "url": "https://cn.leapmotor.com/join/callForBids.html",
+          "status": "active",
+          "pushed": true
+        },
+        {
+          "id": "leapmotor_20260423_001",
+          "title": "26年零跑汽车DCC客服项目招标公告",
+          "publishDate": "2026-04-23",
+          "deadline": "2026-05-07",
+          "category": "客服",
+          "keywords": ["客服", "DCC", "服务"],
+          "url": "https://cn.leapmotor.com/join/callForBids.html",
+          "status": "active",
+          "pushed": true
+        },
+        {
+          "id": "leapmotor_20260422_001",
+          "title": "零跑汽车2026年度零跑智能外呼服务项目",
+          "publishDate": "2026-04-22",
+          "deadline": "2026-05-06",
+          "category": "数字营销",
+          "keywords": ["外呼", "智能", "服务"],
+          "url": "https://cn.leapmotor.com/join/callForBids.html",
+          "status": "active",
+          "pushed": true
+        }
+      ]
+    },
+    "chery": {
+      "name": "奇瑞汽车",
+      "lastCheck": "2026-04-27T10:00:00+08:00",
+      "status": "success",
+      "newBids": [
+        {
+          "id": "chery_20260422_001",
+          "title": "2025年奇瑞集团制造中心4月份捷豹路虎备件采购项目",
+          "publishDate": "2026-04-22",
+          "deadline": "2026-05-06",
+          "category": "采购",
+          "keywords": ["备件", "采购", "制造"],
+          "url": "https://ebd.mychery.com/",
+          "status": "active",
+          "pushed": true
+        },
+        {
+          "id": "chery_20260425_001",
+          "title": "2025年奇瑞汽车鄂尔多斯分公司涂装车间烘干炉输送钢结构架及升降机轨道维修",
+          "publishDate": "2026-04-25",
+          "deadline": "2026-05-09",
+          "category": "维修",
+          "keywords": ["维修", "设备", "车间"],
+          "url": "https://ebd.mychery.com/",
+          "status": "active",
+          "pushed": true
+        }
+      ]
+    },
+    "dongfeng": {
+      "name": "东风汽车",
+      "lastCheck": "2026-04-27T10:00:00+08:00",
+      "status": "success",
+      "newBids": [
+        {
+          "id": "dongfeng_20260418_001",
+          "title": "2026年奕境汽车展厅广告机采购项目",
+          "publishDate": "2026-04-18",
+          "deadline": "2026-05-02",
+          "category": "广告投放",
+          "keywords": ["广告机", "展厅", "设备"],
+          "url": "https://etp.dfmc.com.cn/",
+          "status": "active",
+          "pushed": true
+        },
+        {
+          "id": "dongfeng_20260422_001",
+          "title": "2025年AB级车展展具租赁及搭建运营项目（Ⅱ线）",
+          "publishDate": "2026-04-22",
+          "deadline": "2026-05-06",
+          "category": "活动策划",
+          "keywords": ["车展", "展具", "搭建"],
+          "url": "https://etp.dfmc.com.cn/",
+          "status": "completed",
+          "pushed": true,
+          "notes": "已公示中标结果"
+        }
+      ]
+    }
+  },
+  "marketingBids": [
+    {
+      "platform": "零跑汽车",
+      "title": "26年零跑汽车DCC客服项目",
+      "publishDate": "2026-04-23",
+      "deadline": "2026-05-07",
+      "type": "客服服务",
+      "priority": "high"
+    },
+    {
+      "platform": "零跑汽车",
+      "title": "零跑汽车2026年度智能外呼服务项目",
+      "publishDate": "2026-04-22",
+      "deadline": "2026-05-06",
+      "type": "数字营销",
+      "priority": "medium"
+    },
+    {
+      "platform": "东风汽车",
+      "title": "2026年奕境汽车展厅广告机采购",
+      "publishDate": "2026-04-18",
+      "deadline": "2026-05-02",
+      "type": "展厅设备",
+      "priority": "medium"
+    }
+  ],
+  "summary": {
+    "totalPlatforms": 3,
+    "totalNewBids": 7,
+    "marketingRelatedBids": 3,
+    "lastUpdate": "2026-04-27"
+  }
+}
