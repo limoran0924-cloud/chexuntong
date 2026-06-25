@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>三界博弈录 | 登录</title>
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body data-page="login">
+    <main class="login-shell">
+      <section class="card login-card">
+        <div class="login-left">
+          <div class="brand">
+            <div class="brand-badge">三界</div>
+            <div class="brand-copy">
+              <h1 data-product-name></h1>
+              <p>全国汽车、快消、央国企品牌资料统一入口</p>
+            </div>
+          </div>
+          <p style="margin-top: 24px;">
+            这是一套面向共享访问的动态资料页面。当前版本已经支持三大板块集中总览、行业独立页面、品牌筛选、资料详情页、两类词云和周期趋势查看。
+          </p>
+          <div class="login-points">
+            <div>统一收录三大行业资料，首页可总览，详情页可深挖。</div>
+            <div>支持时间、关键词、品牌三重筛选，前端动态联动。</div>
+            <div>现已扩展为全国品牌池覆盖，并区分真实正文与品牌线索。</div>
+          </div>
+        </div>
+        <div class="login-right">
+          <form class="login-form" id="login-form">
+            <div>
+              <h2>输入统一密码</h2>
+              <div class="helper">当前公开链接可直接分享，但访问前需要输入统一密码。验证通过后，即可继续访问首页、行业页和详情页。</div>
+            </div>
+            <div class="field">
+              <label for="password">访问密码</label>
+              <input id="password" type="password" placeholder="请输入统一访问密码" />
+            </div>
+            <button class="button" type="submit">验证进入</button>
+            <div class="error" id="login-error"></div>
+            <div class="footer-note">当前统一密码：`sanjie2026`。后续如需更换，只需要修改数据配置中的密码字段。</div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <script src="./assets/data.js"></script>
+    <script src="./assets/app.js"></script>
+  </body>
+</html>

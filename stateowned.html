@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>三界博弈录 | 央国企</title>
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body data-page="industry" data-industry="stateowned">
+    <main class="shell industry-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-badge">三界</div>
+          <div class="brand-copy">
+            <h2 id="product-name"></h2>
+            <p>行业动态页</p>
+          </div>
+        </div>
+        <div class="actions">
+          <a class="ghost-button" href="./index.html">返回首页</a>
+          <a class="button" href="./detail.html">查看资料详情页</a>
+          <button class="button" id="logout-btn" type="button">退出访问</button>
+        </div>
+      </header>
+
+      <section class="card hero-strip">
+        <div>
+          <h2 id="industry-name"></h2>
+          <p id="industry-subtitle"></p>
+          <div class="chip-row" id="coverage-tags" style="margin-top: 18px;"></div>
+        </div>
+        <div class="grid-3" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="overview-box"><span>品牌池</span><strong id="brand-count">0</strong></div>
+          <div class="overview-box"><span>平台池</span><strong id="platform-count">0</strong></div>
+          <div class="overview-box"><span>资料数</span><strong id="record-count">0</strong></div>
+        </div>
+      </section>
+
+      <section class="card filters">
+        <div class="field">
+          <label for="start-input">开始时间</label>
+          <input id="start-input" type="date" />
+        </div>
+        <div class="field">
+          <label for="end-input">结束时间</label>
+          <input id="end-input" type="date" />
+        </div>
+        <div class="field">
+          <label for="keyword-input">关键词</label>
+          <input id="keyword-input" type="text" placeholder="输入品牌、话题或关键词" />
+        </div>
+        <div class="actions">
+          <div class="field" style="min-width: 180px;">
+            <label for="brand-select">指定品牌</label>
+            <select id="brand-select"></select>
+          </div>
+          <button class="ghost-button" id="reset-filters" type="button">重置筛选</button>
+        </div>
+      </section>
+
+      <section class="chart-grid">
+        <article class="card word-cloud-card">
+          <div class="section-head">
+            <div>
+              <h3>当日热词词云</h3>
+              <p>随当前筛选结果变化，呈现阶段性热点。</p>
+            </div>
+          </div>
+          <div class="word-cloud" id="wordcloud-today"></div>
+        </article>
+        <article class="card word-cloud-card">
+          <div class="section-head">
+            <div>
+              <h3>行业全域词云</h3>
+              <p>保持行业宏观视角，展示整体高频主题。</p>
+            </div>
+          </div>
+          <div class="word-cloud" id="wordcloud-all"></div>
+        </article>
+      </section>
+
+      <section class="chart-grid">
+        <article class="card trend-card">
+          <div class="section-head">
+            <div>
+              <h3>品牌周期趋势图</h3>
+              <p>默认展示重点品牌 2026 全年月度资料量 / 声量趋势，并补充文字说明与来源。</p>
+            </div>
+          </div>
+          <div id="trend-chart"></div>
+          <div class="chart-legend" id="trend-legend"></div>
+          <div class="trend-detail" id="trend-detail"></div>
+        </article>
+        <article class="card platform-card">
+          <div class="section-head">
+            <div>
+              <h3>平台覆盖池</h3>
+              <p>后续可直接映射到接口平台字段。</p>
+            </div>
+          </div>
+          <div class="platform-list" id="platform-list"></div>
+        </article>
+      </section>
+
+      <section class="card list-card">
+        <div class="section-head">
+          <div>
+              <h3>资料结果</h3>
+            <p>当前筛选命中 <strong id="result-total">0</strong> 条品牌事件 / 网页报告。</p>
+          </div>
+        </div>
+        <div class="record-list" id="record-list"></div>
+      </section>
+    </main>
+    <script src="./assets/data.js"></script>
+    <script src="./assets/app.js"></script>
+  </body>
+</html>
